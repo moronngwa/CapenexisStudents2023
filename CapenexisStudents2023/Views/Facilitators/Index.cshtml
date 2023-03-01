@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CapenexisStudents2023.Models.Facilitators>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Facilitators" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FacilitatorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacilitatorSurname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacilitatorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacilitatorSurname)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FacilitatorId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FacilitatorId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FacilitatorId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
